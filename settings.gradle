@@ -1,0 +1,2 @@
+include ':closedCirclesAndroid'
+include ':facebookSDK'
