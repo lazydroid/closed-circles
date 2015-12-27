@@ -1,10 +1,12 @@
 package com.closedcircles.reloaded;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -176,7 +178,7 @@ public class WebConnectionManager {
         params.put(WebConnection.PARAM_HISTORY_LENGTH, Integer.toString(HISTORY_LENGTH));
         WebConnection.post(WebConnection.PATH_JOINROOM, params, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(JSONObject obj) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject obj) {
                 if( mProgressDialog != null && mProgressDialog.isShowing() )
                     mProgressDialog.dismiss();
                 joinComplete(obj);
@@ -245,7 +247,7 @@ public class WebConnectionManager {
 
             WebConnection.post(WebConnection.PATH_CIRCLESTATE, params, new JsonHttpResponseHandler() {
                 @Override
-                public void onSuccess(JSONObject obj) {
+                public void onSuccess(int statusCode, Header[] headers, JSONObject obj) {
                     Log.e(getClass().getName(), "get state success:" + c.getName());
                     stateComplete(obj, c.getId());
                 }
@@ -317,7 +319,7 @@ public class WebConnectionManager {
         mHandler.postDelayed(mTimer, 60*1000); // ask about updates after 1 minute
 		WebConnection.post(WebConnection.PATH_UPDATES, params, new JsonHttpResponseHandler() {
 			@Override
-			public void onSuccess(JSONObject obj) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject obj) {
                 mFailedUpdateCount = 0;
                 updatesComplete(obj);
 			}
@@ -382,7 +384,7 @@ public class WebConnectionManager {
         params.put(WebConnection.PARAM_THREAD_ID, Long.toString(threadId));
         WebConnection.post(WebConnection.PATH_FETCH_THREAD, params, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(JSONObject obj) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject obj) {
                 fetchThreadComplete(circleId, threadId, obj);
             }
             @Override
@@ -601,18 +603,20 @@ public class WebConnectionManager {
         mLocalData++;
 
 		WebConnection.post(WebConnection.PATH_NEW, params, new AsyncHttpResponseHandler() {
-			@Override
-			public void onSuccess(String content) {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                final String content = new String(responseBody);
                 mAccount.setNewMsgId(Long.parseLong(content));
-				Log.i(getClass().getName(), "Response to SendMessage: " + content);
+                Log.i(getClass().getName(), "Response to SendMessage: " + content);
                 //Toast.makeText(mContext, "response " + content , Toast.LENGTH_LONG).show();
-			}
-			@Override
-			public void onFailure(Throwable error, String content) {
-				Log.e(getClass().getName(), "get updates failure " + error);
-				// TODO: Notification?
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Log.e(getClass().getName(), "get updates failure " + error);
+                // TODO: Notification?
                 //Toast.makeText(mContext, "failure " + content , Toast.LENGTH_LONG).show();
-			}
+            }
 		});
 	}
     public void editMessage(final long msg_id, String message) {
@@ -628,7 +632,7 @@ public class WebConnectionManager {
 
             WebConnection.post(WebConnection.PATH_EDIT, params, new JsonHttpResponseHandler() {
                 @Override
-                public void onSuccess(JSONObject obj) {
+                public void onSuccess(int statusCode, Header[] headers, JSONObject obj) {
                     Log.i(getClass().getName(), "editMessage suceeded");
                     try{
                         boolean succeeded = obj.getBoolean("result");
@@ -648,6 +652,7 @@ public class WebConnectionManager {
                         Log.e(getClass().getName(), "JSON exception" + e.toString());
                     }
                 }
+
                 @Override
                 public void onFailure(int statusCode, org.apache.http.Header[] headers, java.lang.String responseBody, java.lang.Throwable e) {
                     Toast.makeText(mContext, "edit failed" + responseBody, Toast.LENGTH_LONG).show();
@@ -696,16 +701,17 @@ public class WebConnectionManager {
 		Log.w(getClass().getName(), "Sending " + all.toString());
 
 		WebConnection.post(WebConnection.PATH_SETREADMARKER, params, new AsyncHttpResponseHandler() {
-			@Override
-			public void onSuccess(String content) {
-				Log.i(getClass().getName(), "Response to SetReadMarker: " + content);
-			}
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                final String content = new String(responseBody);
+                Log.i(getClass().getName(), "Response to SetReadMarker: " + content);
+            }
 
-			@Override
-			public void onFailure(Throwable error, String content) {
-				Log.e(getClass().getName(), "set read marker failure " + error);
-				// TODO: Notification?
-			}
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Log.e(getClass().getName(), "set read marker failure " + error);
+                // TODO: Notification?
+            }
 		});
 	}
     public void markRead(long threadId, long msgId) {
@@ -745,12 +751,13 @@ public class WebConnectionManager {
 
         WebConnection.post(WebConnection.PATH_SETREADMARKER, params, new AsyncHttpResponseHandler() {
             @Override
-            public void onSuccess(String content) {
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                final String content = new String(responseBody);
                 Log.i(getClass().getName(), "Response to SetReadMarker: " + content);
             }
 
             @Override
-            public void onFailure(Throwable error, String content) {
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 Log.e(getClass().getName(), "set read marker failure " + error);
                 // TODO: Notification?
             }

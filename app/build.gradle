@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.closedcircles.client"
+        applicationId "com.closedcircles.reloaded"
         minSdkVersion 9
         targetSdkVersion 19
     }
@@ -23,5 +23,5 @@ dependencies {
     compile 'com.android.support:support-v4:21.1.0'
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile 'com.google.android.gms:play-services:+'
-    compile 'com.loopj.android:android-async-http:1.4.4'    // 1.4.9 gives some casting errors
+    compile 'com.loopj.android:android-async-http:1.4.8'    // 1.4.9 gives some casting errors
 }
