@@ -1,12 +1,11 @@
-package com.closedcircles.client.model;
+package com.closedcircles.reloaded.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.closedcircles.client.WebConnectionManager;
+import com.closedcircles.reloaded.WebConnectionManager;
 
 public class Account {
 	private long mNotification = -1;
@@ -77,16 +76,16 @@ public class Account {
 	public Circle getCircle(int position) {
 		return mCircles.get(position);
 	}
-	
+
 	public void add(Circle circle) {
 		mCircles.add(circle);
 	}
-	
+
 	public void clear() {
 		mCircles.clear();
 		mNotification = -1;
 	}
-	
+
 	public Circle getCircleForId(long id) {
 		for (int i = 0; i < mCircles.size(); ++i) {
 			if (mCircles.get(i).getId() == id) {
@@ -95,14 +94,14 @@ public class Account {
 		}
 		return null;
 	}
-	
+
 	public int getPositionForId(long id) {
 		for (int i = 0; i < mCircles.size(); ++i) {
 			if (mCircles.get(i).getId() == id) {
 				return i;
 			}
 		}
-		return -1;		
+		return -1;
 	}
 
 	private static final String KEY_NOTIFICATION = "notification";

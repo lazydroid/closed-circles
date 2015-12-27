@@ -1,4 +1,4 @@
-package com.closedcircles.client.activities;
+package com.closedcircles.reloaded.activities;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.closedcircles.client.R;
-import com.closedcircles.client.WebConnectionManager;
-import com.closedcircles.client.model.Account;
+import com.closedcircles.reloaded.R;
+import com.closedcircles.reloaded.WebConnectionManager;
+import com.closedcircles.reloaded.model.Account;
 
 
 public class FragmentCircles extends android.support.v4.app.ListFragment {

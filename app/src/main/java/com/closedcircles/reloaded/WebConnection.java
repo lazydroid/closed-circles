@@ -1,8 +1,7 @@
-package com.closedcircles.client;
+package com.closedcircles.reloaded;
 
 import android.content.Context;
 
-import org.apache.http.client.CookieStore;
 import org.apache.http.client.params.ClientPNames;
 import org.apache.http.cookie.Cookie;
 
@@ -62,7 +61,7 @@ public class WebConnection {
 	public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
 		sClient.post(getAbsoluteUrl(url), params, responseHandler);
 	}
-	
+
 	public static String cookie(String name) {
         for (Cookie cookie: myCookieStore.getCookies()) {
         	if (cookie.getName().equals(name)) {
@@ -71,7 +70,7 @@ public class WebConnection {
         }
         return null;
 	}
-	
+
 	private static String getAbsoluteUrl(String relativeUrl) {
 		return SERVICE_HOST + relativeUrl;
 	}

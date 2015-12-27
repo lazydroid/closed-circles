@@ -1,4 +1,4 @@
-package com.closedcircles.client.activities;
+package com.closedcircles.reloaded.activities;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,10 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 
-import com.closedcircles.client.R;
-import com.closedcircles.client.WebConnectionManager;
-import com.closedcircles.client.model.*;
-import com.closedcircles.client.adapters.*;
+import com.closedcircles.reloaded.R;
+import com.closedcircles.reloaded.WebConnectionManager;
+import com.closedcircles.reloaded.model.*;
+import com.closedcircles.reloaded.adapters.*;
 
 import java.util.ArrayList;
 import java.util.Collections;

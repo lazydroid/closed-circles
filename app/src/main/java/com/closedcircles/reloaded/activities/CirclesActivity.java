@@ -1,11 +1,9 @@
-package com.closedcircles.client.activities;
+package com.closedcircles.reloaded.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -14,15 +12,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 
-import com.closedcircles.client.R;
-import com.closedcircles.client.WebConnection;
-import com.closedcircles.client.WebConnectionManager;
-import com.closedcircles.client.model.*;
-import com.closedcircles.client.adapters.*;
+import com.closedcircles.reloaded.R;
+import com.closedcircles.reloaded.WebConnectionManager;
+import com.closedcircles.reloaded.model.*;
+import com.closedcircles.reloaded.adapters.*;
 
 
 import java.util.ArrayList;

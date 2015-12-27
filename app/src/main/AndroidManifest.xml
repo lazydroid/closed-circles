@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.closedcircles.client"
+    package="com.closedcircles.reloaded"
     android:versionCode="9"
     android:versionName="1.44" >
 
@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppBaseTheme" >
         <activity
-            android:name="com.closedcircles.client.activities.CirclesActivity"
+            android:name="com.closedcircles.reloaded.activities.CirclesActivity"
             android:theme="@style/Theme.AppCompat.Light"
             android:label="@string/app_name" >
             <intent-filter>
@@ -26,12 +26,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.closedcircles.client.activities.LoginActivity"
+            android:name="com.closedcircles.reloaded.activities.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.closedcircles.client.activities.UserInfoActivity"
+            android:name="com.closedcircles.reloaded.activities.UserInfoActivity"
             android:theme="@style/Theme.AppCompat.Light"
             android:label="@string/user_info" >
         </activity>

@@ -1,31 +1,19 @@
-package com.closedcircles.client.adapters;
+package com.closedcircles.reloaded.adapters;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.internal.view.menu.MenuBuilder;
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.closedcircles.client.R;
+import com.closedcircles.reloaded.R;
 
-import com.closedcircles.client.WebConnectionManager;
-import com.closedcircles.client.activities.CirclesActivity;
-import com.closedcircles.client.activities.FragmentMessages;
-import com.closedcircles.client.activities.LoginActivity;
-import com.closedcircles.client.activities.UserInfoActivity;
-import com.closedcircles.client.model.Account;
-import com.closedcircles.client.model.Circle;
+import com.closedcircles.reloaded.WebConnectionManager;
+import com.closedcircles.reloaded.activities.FragmentMessages;
+import com.closedcircles.reloaded.model.Circle;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

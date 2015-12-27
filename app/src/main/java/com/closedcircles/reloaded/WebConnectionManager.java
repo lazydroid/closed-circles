@@ -1,4 +1,4 @@
-package com.closedcircles.client;
+package com.closedcircles.reloaded;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,9 +24,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 
-import com.closedcircles.client.model.*;
-import com.closedcircles.client.activities.*;
-import com.closedcircles.client.adapters.*;
+import com.closedcircles.reloaded.model.*;
+import com.closedcircles.reloaded.activities.*;
 
 import com.loopj.android.http.*;
 
@@ -342,7 +341,7 @@ public class WebConnectionManager {
             }
 		});
 	}
-	
+
 	private void updatesComplete(JSONObject update) {
 		try {
             if ( update.has("wrongVersion") && update.getBoolean("wrongVersion") ){
@@ -416,7 +415,7 @@ public class WebConnectionManager {
 			// Fall through
 		}
 	}
-	
+
 	void postInitialCircles(JSONArray circles, long notification, String version) {
 		Log.w(getClass().getName(), "Posting circles: cursor " + notification + ", num " + circles.length());
         mAccount.clear();
@@ -436,7 +435,7 @@ public class WebConnectionManager {
         if ( mActivity != null )
 		    mActivity.getAdapter().notifyDataSetChanged();
 	}
-	
+
 	private void postMessages(long circleId, long cursor, JSONArray messages) {
 		Log.w(getClass().getName(), "Posting: " + circleId + ", cursor " + cursor + ", num " + messages.length());
 		final Circle circle = mAccount.getCircleForId(circleId);
@@ -490,7 +489,7 @@ public class WebConnectionManager {
             }
         }
 	}
-	
+
 	private void postMarkers(long circleId, JSONArray markers) {
 		Log.w(getClass().getName(), "Markers: " + circleId + ", num " + markers.length());
 		Map<Long, Long> threads = new HashMap<Long, Long>();
@@ -695,13 +694,13 @@ public class WebConnectionManager {
 		params.put(WebConnection.PARAM_XSRF_TOKEN, mXSRF);
 		params.put(WebConnection.PARAM_READ_STATUS, all.toString());
 		Log.w(getClass().getName(), "Sending " + all.toString());
-		
+
 		WebConnection.post(WebConnection.PATH_SETREADMARKER, params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String content) {
 				Log.i(getClass().getName(), "Response to SetReadMarker: " + content);
 			}
-			
+
 			@Override
 			public void onFailure(Throwable error, String content) {
 				Log.e(getClass().getName(), "set read marker failure " + error);

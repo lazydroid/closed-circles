@@ -1,20 +1,9 @@
-package com.closedcircles.client.model;
+package com.closedcircles.reloaded.model;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
-import android.widget.Toast;
-
-import com.closedcircles.client.R;
-import com.closedcircles.client.WebConnectionManager;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
 
 public class Message {
 	public static final int TYPE_TEXT = 0;
@@ -26,7 +15,7 @@ public class Message {
 	public static final int TYPE_FRIEND_READ = 6;
 	public static final int TYPE_THREAD_READ = 9;
     public static final int OPENREPLAY =4;
-	
+
 	protected final long mId;
     protected final String mName;
     protected final String mFullName;
@@ -118,7 +107,7 @@ public class Message {
                            //source.getLong("localData"));
                            0); // skip local data currently
 	}
-	
+
 	private final static String KEY_ID = "id";
 	private final static String KEY_NAME = "name";
     private final static String KEY_FULL_NAME = "fullname";
@@ -130,7 +119,7 @@ public class Message {
     private final static String KEY_FLAGS = "flags";
     private final static String KEY_USERID = "userid";
     private final static String KEY_LOCAL_DATA = "localData";
-	
+
 	public void saveState(Bundle outState) {
 		outState.putLong(KEY_ID, mId);
 		outState.putString(KEY_NAME, mName);
@@ -144,7 +133,7 @@ public class Message {
         outState.putLong(KEY_USERID, mUserId);
         outState.putLong(KEY_LOCAL_DATA, mLocalData);
 	}
-	
+
 	public Message(Bundle inState) {
 		mId = inState.getLong(KEY_ID);
 		mName = inState.getString(KEY_NAME);

@@ -1,4 +1,4 @@
-package com.closedcircles.client.adapters;
+package com.closedcircles.reloaded.adapters;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -8,9 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.closedcircles.client.R;
+import com.closedcircles.reloaded.R;
 
-import com.closedcircles.client.model.Circle;
+import com.closedcircles.reloaded.model.Circle;
 
 public class AdapterThreads extends ArrayAdapter<Circle.MsgThread> {
     private final Context   mContext;

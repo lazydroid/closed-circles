@@ -1,21 +1,19 @@
-package com.closedcircles.client.model;
+package com.closedcircles.reloaded.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.TreeMap;
 import java.util.TreeSet;
 
 import android.os.Bundle;
 import android.util.Log;
 
-import com.closedcircles.client.WebConnectionManager;
+import com.closedcircles.reloaded.WebConnectionManager;
 
 public class Circle {
 	private final long mId;
@@ -48,24 +46,24 @@ public class Circle {
 	public String getName() {
 		return mName;
 	}
-	
+
 	@Override
 	public String toString() {
 		//return Long.toString(mId) + ": " + mName;
         return "#" + mName;
 	}
-	
+
 	public void clearAll() {
 		mThreads.clear();
 		mMessages.clear();
         mMsgMap.clear();
 		mCursor = -1;
 	}
-	
+
 	public int getNumMessages() {
 		return mMessages.size();
 	}
-	
+
 	public Message getMessage(int position) {
 		return mMessages.get(position);
 	}
@@ -106,7 +104,7 @@ public class Circle {
             mMessages.set( mMsgMap.get(Long.valueOf(msg_id)), msg); // replace prev message
         }
     }
-	
+
 	public void setMarkers(Map<Long, Long> markers, long userId) {
 		for (Entry<Long, Long> entry: markers.entrySet()) {
 			if (mThreads.containsKey(entry.getKey())) {
@@ -116,7 +114,7 @@ public class Circle {
 			}
 		}
 	}
-	
+
 	public void addAll(Collection<? extends Message> messages) {
 		for (Message message: messages) {
 			add(message);
@@ -184,7 +182,7 @@ public class Circle {
         }
 		return result;
 	}
-	
+
 	public int getFirstUnreadPosition() {
 		for (int i = 0; i < mMessages.size(); ++i) {
 			if (!mMessages.get(i).isRead()) {
@@ -193,7 +191,7 @@ public class Circle {
 		}
 		return mMessages.size() - 1;
 	}
-	
+
 	private static final String KEY_ID = "circle_id";
 	private static final String KEY_THREAD = "thread_id";
 	private static final String KEY_NAME = "circle_name";
@@ -203,7 +201,7 @@ public class Circle {
 	private static final String KEY_THREADS_SIZE = "threads_size";
 	private static final String KEY_THREAD_ID_PREFIX = "thread_id-";
 	private static final String KEY_THREAD_MARKER_PREFIX = "thread_marker-";
-	
+
 	public void saveState(Bundle outState) {
 		outState.putLong(KEY_ID, mId);
 		outState.putString(KEY_NAME, mName);
@@ -223,7 +221,7 @@ public class Circle {
 			i++;
 		}
 	}
-	
+
 	public Circle(Bundle inState, long userId) {
 		mId = inState.getLong(KEY_ID);
 		mName = inState.getString(KEY_NAME);
@@ -243,7 +241,7 @@ public class Circle {
 			}
 		}
 	}
-	
+
 	public class Thread {
 		private final long mId;
 		private final List<Integer> mMessages = new ArrayList<Integer>();
@@ -253,23 +251,23 @@ public class Circle {
 		public Thread(long id) {
 			mId = id;
 		}
-		
+
 		public long getId() {
 			return mId;
 		}
-		
+
 		public void add(int message) {
 			mMessages.add(message);
 		}
-		
+
 		public int get(int position) {
 			return mMessages.get(position);
 		}
-		
+
 		public int getLast() {
 			return mMessages.get(mMessages.size() - 1);
 		}
-		
+
 		public int size() {
 			return mMessages.size();
 		}
