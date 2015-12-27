@@ -1,2 +1,2 @@
-include ':closedCirclesAndroid'
+include ':app'
 include ':facebookSDK'
