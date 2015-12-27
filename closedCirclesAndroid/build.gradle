@@ -23,5 +23,5 @@ dependencies {
     compile 'com.android.support:support-v4:21.1.0'
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile 'com.google.android.gms:play-services:+'
-    compile files('libs/android-async-http-1.4.4.jar')
+    compile 'com.loopj.android:android-async-http:1.4.4'    // 1.4.9 gives some casting errors
 }
