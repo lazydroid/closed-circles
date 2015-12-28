@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 
+import com.closedcircles.reloaded.FontLoader;
 import com.closedcircles.reloaded.R;
 import com.closedcircles.reloaded.WebConnectionManager;
 import com.closedcircles.reloaded.model.*;
@@ -47,7 +48,7 @@ public class CirclesActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         //Toast.makeText(this, "onCreate", Toast.LENGTH_LONG).show();
 
-        Typeface italicTypeface = Typeface.createFromAsset(getAssets(), "Roboto-LightItalic.ttf");
+        Typeface italicTypeface = FontLoader.getTypeface(this, FontLoader.ROBOTO_ITALIC);
         mCirlcesAdapter = new AdapterCircles(this, italicTypeface, WebConnectionManager.get().account().getCircles());
         //if ( savedInstanceState != null )
         //Toast.makeText(this, "savedInstanceState is not null, " + savedInstanceState.getString("xsrf")!=null? "xsrf exists": "xsrf is null", Toast.LENGTH_LONG).show();
