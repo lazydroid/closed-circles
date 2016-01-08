@@ -20,8 +20,8 @@ android {
 
 dependencies {
     compile project(':facebookSDK')
-    compile 'com.android.support:support-v4:21.1.0'
-    compile 'com.android.support:appcompat-v7:21.0.0'
+    compile 'com.android.support:support-v4:21.+'
+    compile 'com.android.support:appcompat-v7:21.+'
     compile 'com.google.android.gms:play-services:+'
     compile 'com.loopj.android:android-async-http:1.4.8'    // 1.4.9 gives some casting errors
 }
